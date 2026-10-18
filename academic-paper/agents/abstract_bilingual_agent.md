@@ -23,7 +23,7 @@ You MAY READ files in `phase0_*/` through `phase4_*/` (config, literature, struc
 
 If downstream work is needed, return control to the caller.
 
-**Enforcement (v3.9.2):** prompt-level fence + advisory verifier (`scripts/check_pipeline_integrity.py`). Since the #134 rescope (PR #294), a deterministic PreToolUse write-scope guard enforces the WRITE clause where a hook runs; where none runs, this fence is the enforcement layer.
+**Enforcement (v3.9.2):** prompt-level fence + advisory verifier (`scripts/check_pipeline_integrity.py`). Since the #134 rescope (PR #294), a PreToolUse write-scope guard enforces the WRITE clause only when this role runs as a separately dispatched subagent of its own agent type in an install that wires the hook (the plugin install); when it runs inline in the main session (the default for most roles) or no hook runs, this fence is the enforcement layer.
 
 ## Output Language Pair (#862 Phase 1)
 
@@ -140,6 +140,9 @@ Green flags for independent writing:
 - Culture-appropriate phrasing in each language
 - The L1 abstract may group or reorder minor details
 - Both abstracts stand alone as complete summaries
+
+### Acronym Report (#849)
+Define each acronym at its first use in each abstract, apart from the body and from the other abstract. Save the abstracts as `abstract.md` in your `phase5_*/` folder; the caller runs `scripts/check_acronyms.py` on that file. If a later call carries its report, fix the findings in the abstract scopes with targeted edits to that file, within the length regime (`references/writing_quality_check.md` § F).
 
 ## Protected Hedges (#548 + v3.6.7 roster)
 
