@@ -322,9 +322,10 @@ exactly like the three tag-only workflows.
 | `harness-retirement-monthly.yml` | monthly schedule + manual dispatch | opens the monthly prompt-debt audit issue | Administrative | none |
 | `defer-label-gate.yml` | tag push `v*` | open `defer:<tag>` issues must be closed or relabelled | Post-push detection | `[skip-defer-check]` in the tagged commit message |
 | `release-cooldown.yml` | tag push `v*` | paces consecutive release tags | Post-push detection | `[skip-cooldown]` in the commit/tag message |
+| `chang7-upstream-sync.yml` | six-hour schedule + manual dispatch + changes to this workflow on main | reviewed fork overlay, safe upstream merge, and resulting ancestry | Blocking on synchronization executions | none |
 | `tag-version-match.yml` | tag push `v*` | re-runs the full version-consistency lint at the tag | Post-push detection | none |
 
-Count, honestly stated: **14 workflows — 8 blocking on at least one event class, 2
+Count, honestly stated: **15 workflows — 9 blocking on at least one event class, 2
 advisory, 1 administrative, 3 post-push detection.**
 
 Inventory sync, the count line, and the bypass tokens are pinned by
@@ -448,3 +449,4 @@ timeline
 | `academic-paper-reviewer` v1.11.1 | full, re-review, quick, methodology-focus, guided, calibration (6) |
 | `academic-pipeline` v3.23.1 | orchestrator (delegates to sub-skill modes) + `resume_from_passport=<hash>` (v3.6.3 — resume a prior pipeline run from a Material Passport reset boundary; no flag required to invoke. The producing session must have set `ARS_PASSPORT_RESET=1` to emit boundary entries.) + `ARS_CLAIM_AUDIT=1` (v3.8 — opt-in Stage 4→5 L3 claim-faithfulness audit gate; default OFF) + v3.9.4 temporal verification advisory layer (M1 timeline_extraction_agent + M2 5-pass verifier at Phase 4→5 + M3 IRON RULE + M6 first-party Crossref/pdftotext) |
 | `sr-screener` v1.0.0 | protocol, quick, pilot, ta-screen, ft-screen, adjudicate, audit, report (8) |
+

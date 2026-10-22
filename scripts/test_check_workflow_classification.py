@@ -137,7 +137,7 @@ def test_yaml_extension_workflow_fires(repo: Path) -> None:
 
 
 def test_count_line_drift_fires(repo: Path) -> None:
-    _mutate_doc(repo, "8 blocking", "9 blocking")
+    _mutate_doc(repo, "9 blocking", "10 blocking")
     errors = run_all_checks(repo)
     assert any("WC-3" in e and "count line" in e for e in errors)
 
@@ -223,3 +223,4 @@ def test_malformed_row_arity_fires(repo: Path) -> None:
         "WC-1" in e and "tag-version-match.yml" in e and "expected 5" in e
         for e in errors
     )
+
